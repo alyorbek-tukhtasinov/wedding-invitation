@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const MUSIC_URL = 'https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3';
+const MUSIC_URL = '/music.mp3';
 
 export const MusicPlayer: React.FC = () => {
   const { t } = useLanguage();

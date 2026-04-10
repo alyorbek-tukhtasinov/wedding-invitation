@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const COUPLE_IMG = 'https://images.unsplash.com/photo-1758810410699-2dc1daec82dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwY291cGxlJTIwc2lsaG91ZXR0ZSUyMHN1bnNldCUyMHJvbWFudGljfGVufDF8fHx8MTc3NTg0NDc1Nnww&ixlib=rb-4.1.0&q=80&w=1080';
+const COUPLE_IMG = '/wedding1.jpg';
 
 interface Petal {
   id: number;

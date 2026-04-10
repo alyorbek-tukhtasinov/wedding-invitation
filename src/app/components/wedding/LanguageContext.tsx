@@ -6,7 +6,7 @@ export const translations = {
   uz: {
     langOther: 'RU',
     heroBride: 'Nilufar',
-    heroGroom: 'Jasur',
+    heroGroom: 'Umarxo\'ja',
     heroAnd: '&',
     heroSubtitle: "To'yimizga taklif etamiz",
     heroDate: '23 May 2026',
@@ -14,7 +14,7 @@ export const translations = {
 
     invTitle: "Aziz mehmon,",
     invText: "Sizni bizning to'y marosimimizga samimiy qalbdan taklif etishdan mamnunmiz. Bu baxtli va unutilmas kunni siz bilan birga nishonlash bizga juda muhim. Tashrif buyuring va quvonchimizni biz bilan baham ko'ring.",
-    invClosing: "Jasur & Nilufar",
+    invClosing: "Umarxo\'ja & Nilufar",
 
     detailsTitle: "To'y tafsilotlari",
     detailsDateLabel: "Sana",
@@ -40,7 +40,7 @@ export const translations = {
     giftTitle: "Sovg'a",
     giftSubtitle: "Muborakbod uchun",
     giftCardLabel: "Karta raqami",
-    giftHolder: "KARIMOV JASUR",
+    giftHolder: "NAZIROV UMARXO\'JA",
     giftBank: "Uzcard",
     giftCopy: "Nusxa olish",
     giftCopied: "Nusxalandi ✓",
@@ -86,7 +86,7 @@ export const translations = {
     giftTitle: "Подарок",
     giftSubtitle: "Для поздравления",
     giftCardLabel: "Номер карты",
-    giftHolder: "KARIMOV JASUR",
+    giftHolder: "NAZIROV UMARXO\'JA",
     giftBank: "Uzcard",
     giftCopy: "Скопировать",
     giftCopied: "Скопировано ✓",
