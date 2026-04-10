@@ -110,14 +110,14 @@ export const HeroSection: React.FC = () => {
 
       {/* Decorative top ornament */}
       <motion.div
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 1, scaleX: 1 }}
+        initial={{ opacity: 0, scaleX: 0, x: "-50%" }}    /* x qo'shildi */
+        animate={{ opacity: 1, scaleX: 1, x: "-50%" }}    /* x qo'shildi */
         transition={{ duration: 1.2, delay: 0.5 }}
         style={{
           position: 'absolute',
           top: '72px',
           left: '50%',
-          transform: 'translateX(-50%)',
+          /* transform: 'translateX(-50%)', bu qatorni o'chirib tashlang */
           display: 'flex',
           alignItems: 'center',
           gap: '10px',

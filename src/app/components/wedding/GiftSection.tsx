@@ -298,7 +298,7 @@ export const GiftSection: React.FC = () => {
                 letterSpacing: '0.08em',
                 margin: 0,
               }}>
-                05/29
+                09/30
               </p>
             </div>
           </div>
