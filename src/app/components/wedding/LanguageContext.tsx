@@ -5,7 +5,7 @@ export type Lang = 'uz' | 'ru';
 export const translations = {
   uz: {
     langOther: 'RU',
-    heroBride: 'Nilufar',
+    heroBride: 'Muhlisa',
     heroGroom: 'Umarxo\'ja',
     heroAnd: '&',
     heroSubtitle: "To'yimizga taklif etamiz",
@@ -14,7 +14,7 @@ export const translations = {
 
     invTitle: "Aziz mehmon,",
     invText: "Sizni bizning to'y marosimimizga samimiy qalbdan taklif etishdan mamnunmiz. Bu baxtli va unutilmas kunni siz bilan birga nishonlash bizga juda muhim. Tashrif buyuring va quvonchimizni biz bilan baham ko'ring.",
-    invClosing: "Umarxo\'ja & Nilufar",
+    invClosing: "Umarxo\'ja & Muhlisa",
 
     detailsTitle: "To'y tafsilotlari",
     detailsDateLabel: "Sana",
@@ -22,8 +22,8 @@ export const translations = {
     detailsTimeLabel: "Vaqt",
     detailsTimeVal: "16:00",
     detailsVenueLabel: "Manzil",
-    detailsVenueVal: "Guliston Banquet Hall",
-    detailsAddress: "Yunusobod tumani, Toshkent",
+    detailsVenueVal: "Olimxoji to'yxonasi",
+    detailsAddress: "Oltiariq tumani, Zilxa shaharchasi",
 
     countdownTitle: "To'yga qadar",
     countdownDays: "Kun",
@@ -32,8 +32,8 @@ export const translations = {
     countdownSecs: "Soniya",
 
     mapTitle: "Manzil",
-    mapVenue: "Guliston Banquet Hall",
-    mapAddress: "Yunusobod tumani, Toshkent shahri",
+    mapVenue: "Olimxoji to'yxonasi",
+    mapAddress: "Oltiariq tumani, Zilxa shaharchasi",
     mapOpen: "Xaritada ko'rish",
     mapOpenYandex: "Yandex xarita",
 
@@ -51,25 +51,25 @@ export const translations = {
   },
   ru: {
     langOther: 'UZ',
-    heroBride: 'Нилуфар',
-    heroGroom: 'Жасур',
+    heroBride: 'Мухлиса',
+    heroGroom: 'Умархужа',
     heroAnd: '&',
     heroSubtitle: "Приглашаем вас на нашу свадьбу",
-    heroDate: '23 Мая 2026',
+    heroDate: '17 Мая 2026',
     scrollHint: "Листайте вниз",
 
     invTitle: "Дорогой гость,",
     invText: "С радостью и любовью в сердце мы приглашаем вас разделить с нами этот счастливый и незабываемый день. Ваше присутствие сделает наш праздник по-настоящему особенным и памятным.",
-    invClosing: "Жасур & Нилуфар",
+    invClosing: "Умархужа & Мухлиса",
 
     detailsTitle: "Детали торжества",
     detailsDateLabel: "Дата",
-    detailsDateVal: "23 Мая 2026",
+    detailsDateVal: "17 Мая 2026",
     detailsTimeLabel: "Время",
-    detailsTimeVal: "18:00",
+    detailsTimeVal: "16:00",
     detailsVenueLabel: "Место",
-    detailsVenueVal: "Guliston Banquet Hall",
-    detailsAddress: "Юнусабадский район, Ташкент",
+    detailsVenueVal: "Olimxoji to'yxonasi",
+    detailsAddress: "Олтиарыкский район, пос. Зилха",
 
     countdownTitle: "До свадьбы",
     countdownDays: "Дней",
@@ -78,8 +78,8 @@ export const translations = {
     countdownSecs: "Секунд",
 
     mapTitle: "Место проведения",
-    mapVenue: "Guliston Banquet Hall",
-    mapAddress: "Юнусабадский район, г. Ташкент",
+    mapVenue: "Olimxoji to'yxonasi",
+    mapAddress: "Олтиарыкский район, пос. Зилха",
     mapOpen: "Google Maps",
     mapOpenYandex: "Яндекс Карты",
 
