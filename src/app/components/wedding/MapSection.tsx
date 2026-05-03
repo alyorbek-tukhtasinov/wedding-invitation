@@ -3,8 +3,8 @@ import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
 // Coordinates for Yunusobod district, Tashkent
-const MAPS_GOOGLE = 'https://www.google.com/maps?q=41.327054,69.295252&z=16&output=embed';
-const MAPS_GOOGLE_LINK = 'https://www.google.com/maps?q=41.327054,69.295252';
+const MAPS_GOOGLE = 'https://www.google.com/maps/dir/40.4121624,71.5383285/40.4121624,71.5383285/@40.4117621,71.5335005,17z/data=!4m5!4m4!1m0!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D&z=16&output=embed';
+const MAPS_GOOGLE_LINK = 'https://www.google.com/maps/dir/40.4121624,71.5383285/40.4121624,71.5383285/@40.4117621,71.5335005,17z/data=!4m5!4m4!1m0!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D';
 const MAPS_YANDEX_LINK = 'https://yandex.com/maps/?pt=69.295252,41.327054&z=16&l=map';
 
 export const MapSection: React.FC = () => {
