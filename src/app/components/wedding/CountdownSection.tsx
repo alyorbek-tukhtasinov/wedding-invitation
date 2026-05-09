@@ -294,7 +294,7 @@ export const CountdownSection: React.FC = () => {
             textAlign: 'center',
           }}
         >
-          23 May 2026 · 16:00
+          17 May 2026 · 16:00
         </motion.p>
       </div>
     </section>

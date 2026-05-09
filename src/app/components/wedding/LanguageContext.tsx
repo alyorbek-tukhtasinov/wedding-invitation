@@ -12,8 +12,8 @@ export const translations = {
     heroDate: '17 May 2026',
     scrollHint: "Pastga suring",
 
-    invTitle: "Aziz mehmon,",
-    invText: "Sizni bizning to'y marosimimizga samimiy qalbdan taklif etishdan mamnunmiz. Bu baxtli va unutilmas kunni siz bilan birga nishonlash bizga juda muhim. Tashrif buyuring va quvonchimizni biz bilan baham ko'ring.",
+    invTitle: "Hurmatli va aziz mehmon!",
+    invText: "Sizni hayotimizdagi eng quvonchli ayyom — nikoh to'yimizga lutfan taklif etamiz. Ushbu baxtli va unutilmas kunimizda sizdek aziz insonlarni yonimizda ko'rish biz uchun ulkan baxt. Tashrifingiz bilan davramizga fayz, quvonchimizga quvonch qo'shasiz degan umiddamiz.",
     invClosing: "Umarxo\'ja & Muhlisa",
 
     detailsTitle: "To'y tafsilotlari",
@@ -41,7 +41,7 @@ export const translations = {
     giftSubtitle: "Muborakbod uchun",
     giftCardLabel: "Karta raqami",
     giftHolder: "NAZIROV UMARXO\'JA",
-    giftBank: "Humo",
+    giftBank: "Uzcard",
     giftCopy: "Nusxa olish",
     giftCopied: "Nusxalandi ✓",
     giftNote: "Tabrikingiz uchun raxmat!",
@@ -87,7 +87,7 @@ export const translations = {
     giftSubtitle: "Для поздравления",
     giftCardLabel: "Номер карты",
     giftHolder: "NAZIROV UMARXO\'JA",
-    giftBank: "Humo",
+    giftBank: "Uzcard",
     giftCopy: "Скопировать",
     giftCopied: "Скопировано ✓",
     giftNote: "Благодарим за поздравление!",
