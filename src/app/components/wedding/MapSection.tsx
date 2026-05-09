@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-// Coordinates for Yunusobod district, Tashkent
-const MAPS_GOOGLE = 'https://www.google.com/maps/dir/40.4121624,71.5383285/40.4121624,71.5383285/@40.4117621,71.5335005,17z/data=!4m5!4m4!1m0!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D&z=16&output=embed';
-const MAPS_GOOGLE_LINK = 'https://www.google.com/maps/dir/40.4121624,71.5383285/40.4121624,71.5383285/@40.4117621,71.5335005,17z/data=!4m5!4m4!1m0!1m1!4e1!3e0?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D';
-const MAPS_YANDEX_LINK = 'https://yandex.com/maps/?pt=69.295252,41.327054&z=16&l=map';
+const MAPS_GOOGLE = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.764642882536!2d71.5921551!3d40.3919086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb9f7432e34b8b%3A0x8890ad2c6d13be44!2sOLIMJON%20XOJI%20to%CA%BByxonasi!5e0!3m2!1sen!2s!4v1778319568125!5m2!1sen!2s';
+const MAPS_GOOGLE_LINK = 'https://maps.app.goo.gl/FhnbLGDUNC9YLZ766?g_st=ac';
+const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/-/CPcfJTkF';
 
 export const MapSection: React.FC = () => {
   const { t } = useLanguage();
@@ -28,7 +27,6 @@ export const MapSection: React.FC = () => {
         background: 'linear-gradient(180deg, #0a0205 0%, #150808 50%, #0a0205 100%)',
       }}
     >
-      {/* Background texture */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -37,7 +35,6 @@ export const MapSection: React.FC = () => {
         zIndex: 0,
       }} />
 
-      {/* Content */}
       <div style={{
         position: 'relative',
         zIndex: 5,
@@ -49,7 +46,6 @@ export const MapSection: React.FC = () => {
         alignItems: 'center',
         gap: '20px',
       }}>
-        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
@@ -75,7 +71,6 @@ export const MapSection: React.FC = () => {
           }} />
         </motion.div>
 
-        {/* Map container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.95, y: 20 }}
@@ -99,7 +94,6 @@ export const MapSection: React.FC = () => {
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
-          {/* Map overlay pin label */}
           <div style={{
             position: 'absolute',
             bottom: 0,
@@ -111,7 +105,6 @@ export const MapSection: React.FC = () => {
           }} />
         </motion.div>
 
-        {/* Venue Info Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -146,7 +139,6 @@ export const MapSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Map buttons */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
