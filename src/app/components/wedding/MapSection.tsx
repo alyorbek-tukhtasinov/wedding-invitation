@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const MAPS_GOOGLE = 'https://yandex.uz/maps/-/CTUo7U7r';
+const MAPS_GOOGLE = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d792.5039340271153!2d70.76585436558523!3d40.368506748791965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38afbcaa73f2ce4d%3A0x57f19ae913e2f367!2sTashkent%20Region%2C%20Uzbekistan!5e1!3m2!1sen!2s!4v1782642369504!5m2!1sen!2s';
 const MAPS_GOOGLE_LINK = 'https://maps.app.goo.gl/XNo7FeRjMWsMzQfM6';
 const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/-/CTUo7U7r';
 
