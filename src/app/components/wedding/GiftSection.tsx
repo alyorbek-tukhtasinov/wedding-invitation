@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const CARD_NUMBER = '4067 0700 0498 9757';
-const CARD_NUMBER_RAW = '4067070004989757';
+const CARD_NUMBER = '4067 0700 0000 0000';
+const CARD_NUMBER_RAW = '4067070000000000';
 
 export const GiftSection: React.FC = () => {
   const { t } = useLanguage();
