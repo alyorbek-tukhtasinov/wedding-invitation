@@ -5,20 +5,20 @@ export type Lang = 'uz' | 'ru';
 export const translations = {
   uz: {
     langOther: 'RU',
-    heroBride: 'Zuhraxon',
-    heroGroom: 'Shohzamon',
+    heroBride: 'Zuhra',
+    heroGroom: 'Tohir',
     heroAnd: '&',
     heroSubtitle: "To'yimizga taklif etamiz",
-    heroDate: '05 Iyul 2026',
+    heroDate: '08 Avgust 2026',
     scrollHint: "Pastga suring",
 
     invTitle: "Hurmatli va aziz mehmon!",
     invText: "Sizni hayotimizdagi eng quvonchli ayyom — nikoh to'yimizga lutfan taklif etamiz. Ushbu baxtli va unutilmas kunimizda sizdek aziz insonlarni yonimizda ko'rish biz uchun ulkan baxt. Tashrifingiz bilan davramizga fayz, quvonchimizga quvonch qo'shasiz degan umiddamiz.",
-    invClosing: "Shohzamon & Zuhraxon",
+    invClosing: "Tohir & Zuhra",
 
     detailsTitle: "To'y tafsilotlari",
     detailsDateLabel: "Sana",
-    detailsDateVal: "05 Iyul 2026",
+    detailsDateVal: "08 Avgust 2026",
     detailsTimeLabel: "Vaqt",
     detailsTimeVal: "18:00",
     detailsVenueLabel: "Manzil",
@@ -40,7 +40,7 @@ export const translations = {
     giftTitle: "Sovg'a",
     giftSubtitle: "Muborakbod uchun",
     giftCardLabel: "Karta raqami",
-    giftHolder: "BAHODIRJONOV SHOHZAMON",
+    giftHolder: "TOHIROV Tohir",
     giftBank: "Humo",
     giftCopy: "Nusxa olish",
     giftCopied: "Nusxalandi ✓",
@@ -51,8 +51,8 @@ export const translations = {
   },
   ru: {
     langOther: 'UZ',
-    heroBride: 'Зуҳрахон',
-    heroGroom: 'Шоҳзамон',
+    heroBride: 'Зуҳра',
+    heroGroom: 'Тоҳир',
     heroAnd: '&',
     heroSubtitle: "Приглашаем вас на нашу свадьбу",
     heroDate: '05 Июля 2026',
@@ -60,7 +60,7 @@ export const translations = {
 
     invTitle: "Уважаемый и дорогой гость!",
     invText: "От всей души приглашаем вас на самое радостное событие в нашей жизни — нашу свадьбу. Для нас огромное счастье видеть таких дорогих сердцу людей рядом в этот незабываемый день. Надеемся, что своим присутствием вы украсите наш праздник и разделите нашу радость.",
-    invClosing: "Шоҳзамон & Зуҳрахон",
+    invClosing: "Тоҳир & Зуҳра",
 
     detailsTitle: "Детали торжества",
     detailsDateLabel: "Дата",
@@ -86,7 +86,7 @@ export const translations = {
     giftTitle: "Подарок",
     giftSubtitle: "Для поздравления",
     giftCardLabel: "Номер карты",
-    giftHolder: "Баҳодиржонов Шоҳзамон",
+    giftHolder: "Баҳодиржонов Тоҳир",
     giftBank: "Humo",
     giftCopy: "Скопировать",
     giftCopied: "Скопировано ✓",
