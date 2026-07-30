@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const GOLDEN_IMG = 'https://images.unsplash.com/photo-1707097700926-530e88bac97f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3ZWRkaW5nJTIwY2VyZW1vbnklMjBnb2xkZW4lMjBsaWdodCUyMGJva2VofGVufDF8fHx8MTc3NTg0NDc1NXww&ixlib=rb-4.1.0&q=80&w=1080';
+const GOLDEN_IMG = '/wedding3.jpg';
 
 interface DetailCardProps {
   icon: React.ReactNode;

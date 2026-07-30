@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const FLORAL_IMG = 'https://images.unsplash.com/photo-1764010729975-969e3c99e2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMHdlZGRpbmclMjBmbG9yYWwlMjBwaW5rJTIwcm9zZXMlMjBlbGVnYW50fGVufDF8fHx8MTc3NTg0NDc1NXww&ixlib=rb-4.1.0&q=80&w=1080';
+const FLORAL_IMG = '/wedding2.jpg';
 
 export const InvitationSection: React.FC = () => {
   const { t } = useLanguage();

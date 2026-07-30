@@ -119,13 +119,19 @@ export const CountdownSection: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      {/* Dark luxury gradient background */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(160deg, #060210 0%, #0d0418 30%, #0a0308 60%, #0c0212 100%)',
-        zIndex: 0,
-      }} />
+      {/* Background */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <img
+          src="/wedding4.jpg"
+          alt="Wedding background"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.3)' }}
+        />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(5,1,3,0.55) 0%, rgba(8,2,5,0.4) 35%, rgba(12,3,7,0.65) 70%, rgba(5,1,3,0.92) 100%)',
+        }} />
+      </div>
 
       {/* Radial glow */}
       <div style={{

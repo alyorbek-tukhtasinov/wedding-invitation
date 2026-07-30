@@ -40,11 +40,24 @@ export const GiftSection: React.FC = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(160deg, #080210 0%, #100515 40%, #0d0a02 100%)',
       }}
     >
-      {/* Background glow effects */}
+      {/* Background */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <img
+          src="/wedding6.jpg"
+          alt="Wedding background"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.3)' }}
+        />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(180deg, rgba(5,1,3,0.55) 0%, rgba(8,2,5,0.4) 35%, rgba(12,3,7,0.65) 70%, rgba(5,1,3,0.92) 100%)',
+        }} />
+      </div>
+
+      {/* Background glow effects */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
