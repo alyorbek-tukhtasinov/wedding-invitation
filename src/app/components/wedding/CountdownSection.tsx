@@ -218,7 +218,7 @@ export const CountdownSection: React.FC = () => {
         >
           <p style={{
             fontFamily: 'Montserrat, sans-serif',
-            fontSize: '10px',
+            fontSize: '30px',
             fontWeight: 300,
             color: '#C9A96E',
             letterSpacing: '0.25em',
@@ -294,7 +294,7 @@ export const CountdownSection: React.FC = () => {
             textAlign: 'center',
           }}
         >
-          05 iyul 2026 · 18:00
+          08 Avgust 2026 · 18:00
         </motion.p>
       </div>
     </section>
