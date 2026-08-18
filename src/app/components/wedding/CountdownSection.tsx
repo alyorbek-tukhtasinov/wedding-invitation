@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const WEDDING_DATE = new Date('2026-08-08T18:00:00');
+const WEDDING_DATE = new Date('2026-08-25T16:00:00');
 
 function getTimeLeft() {
   const now = new Date();
@@ -300,7 +300,7 @@ export const CountdownSection: React.FC = () => {
             textAlign: 'center',
           }}
         >
-          08 Avgust 2026 · 18:00
+          25 Avgust 2026 · 16:00
         </motion.p>
       </div>
     </section>

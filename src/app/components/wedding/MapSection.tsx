@@ -3,10 +3,10 @@ import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
 // Embedded map (using Yandex) centered at longitude,latitude = 70.765808,40.368340
-const MAPS_GOOGLE = 'https://yandex.uz/map-widget/v1/?ll=70.765808%2C40.368340&z=16&source=mapframe';
+const MAPS_GOOGLE = 'https://yandex.uz/map-widget/v1/?l=sat&ll=70.766612%2C40.368446&mode=search&oid=239106477257&ol=biz&z=19';
 // Link to open the same coordinates in Yandex Maps
-const MAPS_GOOGLE_LINK = 'https://yandex.uz/maps/?ll=70.765808%2C40.368340&z=16';
-const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/?ll=70.765808%2C40.368340&z=16';
+const MAPS_GOOGLE_LINK = 'https://maps.app.goo.gl/qn6PFwWLDo7gizwb7';
+const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/-/CTgWaCpc';
 
 export const MapSection: React.FC = () => {
   const { t } = useLanguage();
