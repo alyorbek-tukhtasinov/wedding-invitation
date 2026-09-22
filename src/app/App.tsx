@@ -7,7 +7,10 @@ import { InvitationSection } from './components/wedding/InvitationSection';
 import { DetailsSection } from './components/wedding/DetailsSection';
 import { CountdownSection } from './components/wedding/CountdownSection';
 import { MapSection } from './components/wedding/MapSection';
-import { GiftSection } from './components/wedding/GiftSection';
+// GiftSection kod darajasida saqlab qolindi, lekin hozircha ko'rsatilmaydi.
+// Qayta yoqish uchun quyidagi importni va pastdagi <GiftSection /> qatorini
+// oching hamda SectionProgress totalSections qiymatini 6 ga o'zgartiring.
+// import { GiftSection } from './components/wedding/GiftSection';
 
 export default function App() {
   return (
@@ -62,7 +65,7 @@ export default function App() {
           <DetailsSection />
           <CountdownSection />
           <MapSection />
-          <GiftSection />
+          {/* <GiftSection /> */}
         </div>
 
         {/* Overlays (fixed, always on top) */}
@@ -70,7 +73,7 @@ export default function App() {
         <MusicPlayer />
 
         {/* Section progress indicator */}
-        <SectionProgress totalSections={6} />
+        <SectionProgress totalSections={5} />
       </div>
     </LanguageProvider>
   );

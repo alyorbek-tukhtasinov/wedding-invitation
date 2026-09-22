@@ -62,7 +62,7 @@ export const HeroSection: React.FC = () => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center top',
+            objectPosition: 'center 30%',
           }}
         />
         {/* Multi-layer overlay for cinematic depth */}

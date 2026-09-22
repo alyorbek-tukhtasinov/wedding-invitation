@@ -2,11 +2,13 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-// Embedded map (using Yandex) centered at longitude,latitude = 70.765808,40.368340
-const MAPS_GOOGLE = 'https://yandex.uz/map-widget/v1/?l=sat&ll=70.766612%2C40.368446&mode=search&oid=239106477257&ol=biz&z=19';
-// Link to open the same coordinates in Yandex Maps
-const MAPS_GOOGLE_LINK = 'https://maps.app.goo.gl/qn6PFwWLDo7gizwb7';
-const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/-/CTgWaCpc';
+// «20 yillik» to'yxonasi — Chortoq, Namangan viloyati
+// Koordinatalar (lon,lat) = 71.837887, 41.080877
+const MAPS_EMBED = 'https://yandex.uz/map-widget/v1/?ll=71.837887%2C41.080877&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo1NTU5MDg4NzQxEk5Pyrt6YmVraXN0b24sIE5hbWFuZ2FuIHZpbG95YXRpLCBDaG9ydG9xLCBNdXN0YXFpbGxpa25pbmcgMjAgeWlsbGlnaSBrb8q7Y2hhc2kiCg0ArY9CFc5SJEI%2C&z=18';
+// Yandex Maps'da ochish uchun havola
+const MAPS_YANDEX_LINK = 'https://yandex.uz/maps/-/CXERnN1q';
+// Google Maps'da o'sha koordinatalarni ochish
+const MAPS_GOOGLE_LINK = 'https://www.google.com/maps/search/?api=1&query=41.080877%2C71.837887';
 
 export const MapSection: React.FC = () => {
   const { t } = useLanguage();
@@ -92,7 +94,7 @@ export const MapSection: React.FC = () => {
           }}
         >
           <iframe
-            src={MAPS_GOOGLE}
+            src={MAPS_EMBED}
             title="Wedding venue map"
             width="100%"
             height="220"

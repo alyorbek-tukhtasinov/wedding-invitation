@@ -21,7 +21,7 @@ export const translations = {
     detailsTimeLabel: "Vaqt",
     detailsVenueLabel: "Manzil",
     detailsVenueVal: "«20 yillik» to'yxonasi",
-    detailsAddress: "",
+    detailsAddress: "Chortoq, Mustaqillikning 20 yilligi ko'chasi",
 
     // Ikki tadbir
     event1Name: "Qiz bazmi",
@@ -40,7 +40,7 @@ export const translations = {
 
     mapTitle: "Manzil",
     mapVenue: "«20 yillik» to'yxonasi",
-    mapAddress: "",
+    mapAddress: "Chortoq, Mustaqillikning 20 yilligi ko'chasi",
     mapOpen: "Xaritada ko'rish",
     mapOpenYandex: "Yandex xarita",
 
@@ -74,7 +74,7 @@ export const translations = {
     detailsTimeLabel: "Время",
     detailsVenueLabel: "Место",
     detailsVenueVal: "«20 yillik» to'yxonasi",
-    detailsAddress: "",
+    detailsAddress: "Чартак, ул. 20-летия Независимости",
 
     // Два события
     event1Name: "Девичник (Qiz bazmi)",
@@ -93,7 +93,7 @@ export const translations = {
 
     mapTitle: "Место проведения",
     mapVenue: "«20 yillik» to'yxonasi",
-    mapAddress: "",
+    mapAddress: "Чартак, ул. 20-летия Независимости",
     mapOpen: "Google Maps",
     mapOpenYandex: "Яндекс Карты",
 
