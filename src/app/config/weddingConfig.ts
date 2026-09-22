@@ -38,11 +38,29 @@ export interface WeddingContent {
   giftBank: string;         // Bank / to'lov tizimi nomi
 }
 
+// Bir nechta to'yxona bo'lsa (masalan qiz bazmi va nikoh alohida joyda),
+// har bir to'yxona uchun shu obyekt ishlatiladi. `venues` bo'sh yoki
+// yo'q bo'lsa — sayt eski (bitta to'yxona) ko'rinishida ishlaydi.
+export interface VenueInfo {
+  label: { uz: string; ru: string };    // Sarlavha — qaysi tadbir (masalan "Qiz bazmi")
+  name: { uz: string; ru: string };     // To'yxona nomi
+  address: { uz: string; ru: string };  // Manzil
+  embed: string;                          // Yandex map-widget iframe src
+  yandexLink: string;                     // Yandex Maps havolasi
+  googleLink: string;                     // Google Maps havolasi
+}
+
 export interface WeddingConfig {
   // Brauzer sahifa nomi (tab)
   siteTitle: string;
   // Konvert muhridagi monogramma (masalan "S&Z")
   monogram: string;
+
+  // Bir nechta to'yxona (ixtiyoriy). Bo'lsa — xarita bo'limi har bir
+  // to'yxonani bitta sahifada ko'rsatadi, tafsilotlarda esa har tadbir
+  // ostida o'z to'yxonasi yoziladi. Yo'q bo'lsa — pastdagi bitta `map`
+  // va content.mapVenue/mapAddress ishlatiladi.
+  venues?: VenueInfo[];
 
   // Countdown uchun ANIQ sana-vaqt (ISO format: YYYY-MM-DDTHH:mm:ss)
   countdown: {

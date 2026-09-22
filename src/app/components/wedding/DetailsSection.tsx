@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
+import { weddingConfig } from '../../config/weddingConfig';
 
 const GOLDEN_IMG = '/wedding3.jpg';
 
@@ -25,11 +26,12 @@ interface EventCardProps {
   date: string;
   time: string;
   timeLabel: string;
+  venue?: string;
   delay: number;
   isInView: boolean;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ name, date, time, timeLabel, delay, isInView }) => (
+const EventCard: React.FC<EventCardProps> = ({ name, date, time, timeLabel, venue, delay, isInView }) => (
   <motion.div
     initial={{ opacity: 0, y: 30, scale: 0.95 }}
     animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
@@ -92,14 +94,32 @@ const EventCard: React.FC<EventCardProps> = ({ name, date, time, timeLabel, dela
       }}>
         {timeLabel}: {time}
       </p>
+      {venue && (
+        <p style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '11px',
+          fontWeight: 300,
+          color: 'rgba(201,169,110,0.85)',
+          letterSpacing: '0.02em',
+          margin: '5px 0 0',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+        }}>
+          <span style={{ fontSize: '10px' }}>📍</span>{venue}
+        </p>
+      )}
     </div>
   </motion.div>
 );
 
 export const DetailsSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.3 });
+
+  const venues = weddingConfig.venues;
+  const multiVenue = !!(venues && venues.length > 0);
 
   return (
     <section
@@ -197,6 +217,7 @@ export const DetailsSection: React.FC = () => {
           date={t.event1Date}
           time={t.event1Time}
           timeLabel={t.detailsTimeLabel}
+          venue={multiVenue ? venues![0]?.name[lang] : undefined}
         />
 
         {/* Event 2 — Nikoh to'yi */}
@@ -207,9 +228,11 @@ export const DetailsSection: React.FC = () => {
           date={t.event2Date}
           time={t.event2Time}
           timeLabel={t.detailsTimeLabel}
+          venue={multiVenue ? venues![1]?.name[lang] : undefined}
         />
 
-        {/* Venue Card */}
+        {/* Venue Card — faqat bitta to'yxona rejimida */}
+        {!multiVenue && (
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
@@ -275,6 +298,7 @@ export const DetailsSection: React.FC = () => {
             )}
           </div>
         </motion.div>
+        )}
 
         {/* Bottom ornament */}
         <motion.div
