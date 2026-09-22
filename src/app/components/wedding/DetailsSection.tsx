@@ -4,16 +4,32 @@ import { useLanguage } from './LanguageContext';
 
 const GOLDEN_IMG = '/wedding3.jpg';
 
-interface DetailCardProps {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  subValue?: string;
+const CalendarIcon = (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="4" width="18" height="18" rx="3" stroke="#C9A96E" strokeWidth="1.3" />
+    <path d="M3 9h18" stroke="#C9A96E" strokeWidth="1.3" />
+    <path d="M8 2v3M16 2v3" stroke="#C9A96E" strokeWidth="1.3" strokeLinecap="round" />
+    <path d="M8 13h2M12 13h1M8 17h2M12 17h1M16 13h1" stroke="#C9A96E" strokeWidth="1.3" strokeLinecap="round" />
+  </svg>
+);
+
+const VenueIcon = (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C9A96E" strokeWidth="1.3" />
+    <circle cx="12" cy="9" r="2.5" stroke="#C9A96E" strokeWidth="1.3" />
+  </svg>
+);
+
+interface EventCardProps {
+  name: string;
+  date: string;
+  time: string;
+  timeLabel: string;
   delay: number;
   isInView: boolean;
 }
 
-const DetailCard: React.FC<DetailCardProps> = ({ icon, label, value, subValue, delay, isInView }) => (
+const EventCard: React.FC<EventCardProps> = ({ name, date, time, timeLabel, delay, isInView }) => (
   <motion.div
     initial={{ opacity: 0, y: 30, scale: 0.95 }}
     animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
@@ -24,10 +40,10 @@ const DetailCard: React.FC<DetailCardProps> = ({ icon, label, value, subValue, d
       WebkitBackdropFilter: 'blur(20px)',
       border: '1px solid rgba(201,169,110,0.2)',
       borderRadius: '20px',
-      padding: '20px 22px',
+      padding: '18px 20px',
       display: 'flex',
       alignItems: 'center',
-      gap: '18px',
+      gap: '16px',
       width: '100%',
     }}
   >
@@ -42,41 +58,40 @@ const DetailCard: React.FC<DetailCardProps> = ({ icon, label, value, subValue, d
       justifyContent: 'center',
       flexShrink: 0,
     }}>
-      {icon}
+      {CalendarIcon}
     </div>
     <div style={{ flex: 1, textAlign: 'left' }}>
       <p style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '10px',
-        fontWeight: 400,
+        fontFamily: 'Cormorant Garamond, serif',
+        fontSize: '22px',
+        fontWeight: 500,
+        fontStyle: 'italic',
         color: '#C9A96E',
-        letterSpacing: '0.12em',
-        textTransform: 'uppercase',
         margin: '0 0 4px',
+        lineHeight: 1.1,
       }}>
-        {label}
+        {name}
       </p>
       <p style={{
         fontFamily: 'Cormorant Garamond, serif',
-        fontSize: '20px',
+        fontSize: '19px',
         fontWeight: 500,
         color: '#F8F0E3',
         margin: 0,
         lineHeight: 1.2,
       }}>
-        {value}
+        {date}
       </p>
-      {subValue && (
-        <p style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '11px',
-          fontWeight: 300,
-          color: 'rgba(245,240,227,0.55)',
-          margin: '3px 0 0',
-        }}>
-          {subValue}
-        </p>
-      )}
+      <p style={{
+        fontFamily: 'Montserrat, sans-serif',
+        fontSize: '11px',
+        fontWeight: 300,
+        color: 'rgba(245,240,227,0.6)',
+        letterSpacing: '0.06em',
+        margin: '3px 0 0',
+      }}>
+        {timeLabel}: {time}
+      </p>
     </div>
   </motion.div>
 );
@@ -174,50 +189,92 @@ export const DetailsSection: React.FC = () => {
           }} />
         </motion.div>
 
-        {/* Date Card */}
-        <DetailCard
+        {/* Event 1 — Qiz bazmi */}
+        <EventCard
           delay={0.15}
           isInView={isInView}
-          label={t.detailsDateLabel}
-          value={t.detailsDateVal}
-          icon={
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="4" width="18" height="18" rx="3" stroke="#C9A96E" strokeWidth="1.3"/>
-              <path d="M3 9h18" stroke="#C9A96E" strokeWidth="1.3"/>
-              <path d="M8 2v3M16 2v3" stroke="#C9A96E" strokeWidth="1.3" strokeLinecap="round"/>
-              <path d="M8 13h2M12 13h1M8 17h2M12 17h1M16 13h1" stroke="#C9A96E" strokeWidth="1.3" strokeLinecap="round"/>
-            </svg>
-          }
+          name={t.event1Name}
+          date={t.event1Date}
+          time={t.event1Time}
+          timeLabel={t.detailsTimeLabel}
         />
 
-        {/* Time Card */}
-        <DetailCard
+        {/* Event 2 — Nikoh to'yi */}
+        <EventCard
           delay={0.3}
           isInView={isInView}
-          label={t.detailsTimeLabel}
-          value={t.detailsTimeVal}
-          icon={
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="#C9A96E" strokeWidth="1.3"/>
-              <path d="M12 7v5l3 3" stroke="#C9A96E" strokeWidth="1.3" strokeLinecap="round"/>
-            </svg>
-          }
+          name={t.event2Name}
+          date={t.event2Date}
+          time={t.event2Time}
+          timeLabel={t.detailsTimeLabel}
         />
 
         {/* Venue Card */}
-        <DetailCard
-          delay={0.45}
-          isInView={isInView}
-          label={t.detailsVenueLabel}
-          value={t.detailsVenueVal}
-          subValue={t.detailsAddress}
-          icon={
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C9A96E" strokeWidth="1.3"/>
-              <circle cx="12" cy="9" r="2.5" stroke="#C9A96E" strokeWidth="1.3"/>
-            </svg>
-          }
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          style={{
+            background: 'rgba(255,255,255,0.06)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(201,169,110,0.2)',
+            borderRadius: '20px',
+            padding: '18px 20px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            width: '100%',
+          }}
+        >
+          <div style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '14px',
+            background: 'rgba(201,169,110,0.12)',
+            border: '1px solid rgba(201,169,110,0.25)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}>
+            {VenueIcon}
+          </div>
+          <div style={{ flex: 1, textAlign: 'left' }}>
+            <p style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontSize: '10px',
+              fontWeight: 400,
+              color: '#C9A96E',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              margin: '0 0 4px',
+            }}>
+              {t.detailsVenueLabel}
+            </p>
+            <p style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontSize: '20px',
+              fontWeight: 500,
+              color: '#F8F0E3',
+              margin: 0,
+              lineHeight: 1.2,
+            }}>
+              {t.detailsVenueVal}
+            </p>
+            {t.detailsAddress && (
+              <p style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: '11px',
+                fontWeight: 300,
+                color: 'rgba(245,240,227,0.55)',
+                margin: '3px 0 0',
+              }}>
+                {t.detailsAddress}
+              </p>
+            )}
+          </div>
+        </motion.div>
 
         {/* Bottom ornament */}
         <motion.div

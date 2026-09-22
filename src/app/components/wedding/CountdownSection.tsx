@@ -2,17 +2,27 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
 
-const WEDDING_DATE = new Date('2026-08-25T16:00:00');
+// Ikki tadbir sanasi
+const QIZ_BAZMI_DATE = new Date('2026-10-03T10:00:00');
+const NIKOH_DATE = new Date('2026-10-04T11:00:00');
 
-function getTimeLeft() {
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  finished: boolean;
+}
+
+function getTimeLeft(target: Date): TimeLeft {
   const now = new Date();
-  const diff = WEDDING_DATE.getTime() - now.getTime();
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  const diff = target.getTime() - now.getTime();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, finished: true };
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  return { days, hours, minutes, seconds };
+  return { days, hours, minutes, seconds, finished: false };
 }
 
 interface CountBlockProps {
@@ -34,14 +44,14 @@ const CountBlock: React.FC<CountBlockProps> = ({ value, label, delay, isInView }
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '8px',
+        gap: '6px',
       }}
     >
       <div style={{
         position: 'relative',
-        width: '72px',
-        height: '72px',
-        borderRadius: '16px',
+        width: '62px',
+        height: '62px',
+        borderRadius: '14px',
         background: 'rgba(255,255,255,0.05)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
@@ -55,7 +65,7 @@ const CountBlock: React.FC<CountBlockProps> = ({ value, label, delay, isInView }
         <div style={{
           position: 'absolute',
           inset: 0,
-          borderRadius: '16px',
+          borderRadius: '14px',
           background: 'radial-gradient(circle at 50% 0%, rgba(201,169,110,0.15) 0%, transparent 60%)',
           pointerEvents: 'none',
         }} />
@@ -66,7 +76,7 @@ const CountBlock: React.FC<CountBlockProps> = ({ value, label, delay, isInView }
           transition={{ duration: 0.25 }}
           style={{
             fontFamily: 'Cormorant Garamond, serif',
-            fontSize: '36px',
+            fontSize: '30px',
             fontWeight: 300,
             color: '#F8F0E3',
             lineHeight: 1,
@@ -80,10 +90,10 @@ const CountBlock: React.FC<CountBlockProps> = ({ value, label, delay, isInView }
       </div>
       <p style={{
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: '9px',
+        fontSize: '8px',
         fontWeight: 400,
         color: '#C9A96E',
-        letterSpacing: '0.14em',
+        letterSpacing: '0.12em',
         textTransform: 'uppercase',
         margin: 0,
       }}>
@@ -93,14 +103,101 @@ const CountBlock: React.FC<CountBlockProps> = ({ value, label, delay, isInView }
   );
 };
 
+interface CountdownBlockGroupProps {
+  title: string;
+  dateLabel: string;
+  timeLeft: TimeLeft;
+  startedLabel: string;
+  baseDelay: number;
+  isInView: boolean;
+}
+
+const CountdownGroup: React.FC<CountdownBlockGroupProps> = ({
+  title, dateLabel, timeLeft, startedLabel, baseDelay, isInView,
+}) => {
+  const { t } = useLanguage();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.7, delay: baseDelay }}
+      style={{
+        width: '100%',
+        background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(201,169,110,0.15)',
+        borderRadius: '20px',
+        padding: '18px 16px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '14px',
+      }}
+    >
+      {/* Event title + date */}
+      <div style={{ textAlign: 'center' }}>
+        <p style={{
+          fontFamily: 'Cormorant Garamond, serif',
+          fontSize: '22px',
+          fontWeight: 500,
+          fontStyle: 'italic',
+          color: '#F8F0E3',
+          margin: 0,
+          lineHeight: 1.1,
+        }}>
+          {title}
+        </p>
+        <p style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '10px',
+          fontWeight: 300,
+          color: 'rgba(201,169,110,0.75)',
+          letterSpacing: '0.08em',
+          margin: '4px 0 0',
+        }}>
+          {dateLabel}
+        </p>
+      </div>
+
+      {timeLeft.finished ? (
+        <p style={{
+          fontFamily: 'Dancing Script, cursive',
+          fontSize: '26px',
+          fontWeight: 600,
+          color: '#C9A96E',
+          margin: '4px 0',
+          textShadow: '0 0 20px rgba(201,169,110,0.4)',
+        }}>
+          {startedLabel}
+        </p>
+      ) : (
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '10px',
+        }}>
+          <CountBlock value={timeLeft.days} label={t.countdownDays} delay={baseDelay + 0.1} isInView={isInView} />
+          <CountBlock value={timeLeft.hours} label={t.countdownHours} delay={baseDelay + 0.15} isInView={isInView} />
+          <CountBlock value={timeLeft.minutes} label={t.countdownMins} delay={baseDelay + 0.2} isInView={isInView} />
+          <CountBlock value={timeLeft.seconds} label={t.countdownSecs} delay={baseDelay + 0.25} isInView={isInView} />
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
 export const CountdownSection: React.FC = () => {
   const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+  const [qizBazmi, setQizBazmi] = useState(() => getTimeLeft(QIZ_BAZMI_DATE));
+  const [nikoh, setNikoh] = useState(() => getTimeLeft(NIKOH_DATE));
 
   useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
+    const interval = setInterval(() => {
+      setQizBazmi(getTimeLeft(QIZ_BAZMI_DATE));
+      setNikoh(getTimeLeft(NIKOH_DATE));
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -145,44 +242,8 @@ export const CountdownSection: React.FC = () => {
         zIndex: 1,
       }} />
 
-      {/* Ambient orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        style={{
-          position: 'absolute',
-          top: '20%',
-          left: '10%',
-          width: '180px',
-          height: '180px',
-          background: 'radial-gradient(circle, rgba(100,30,60,0.15) 0%, transparent 70%)',
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-        style={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '10%',
-          width: '160px',
-          height: '160px',
-          background: 'radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%)',
-          zIndex: 1,
-          pointerEvents: 'none',
-        }}
-      />
-
       {/* Star dots */}
-      {[...Array(30)].map((_, i) => (
+      {[...Array(24)].map((_, i) => (
         <motion.div
           key={i}
           animate={{ opacity: [0.1, 0.6, 0.1] }}
@@ -212,8 +273,10 @@ export const CountdownSection: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '40px',
+        gap: '20px',
         padding: '0 24px',
+        width: '100%',
+        maxWidth: '390px',
       }}>
         {/* Title */}
         <motion.div
@@ -223,19 +286,14 @@ export const CountdownSection: React.FC = () => {
           style={{ textAlign: 'center' }}
         >
           <p style={{
-            fontFamily: 'Montserrat, sans-serif',
-            fontSize: '30px',
-            fontWeight: 300,
-            color: '#C9A96E',
-            letterSpacing: '0.25em',
-            textTransform: 'uppercase',
-            margin: '0 0 10px',
+            fontSize: '26px',
+            margin: '0 0 6px',
           }}>
             ⏳
           </p>
           <h2 style={{
             fontFamily: 'Cormorant Garamond, serif',
-            fontSize: 'clamp(28px, 8vw, 36px)',
+            fontSize: 'clamp(26px, 8vw, 34px)',
             fontWeight: 300,
             fontStyle: 'italic',
             color: '#F8F0E3',
@@ -247,61 +305,29 @@ export const CountdownSection: React.FC = () => {
             width: '60px',
             height: '1px',
             background: 'linear-gradient(to right, transparent, #C9A96E, transparent)',
-            margin: '12px auto 0',
+            margin: '10px auto 0',
           }} />
         </motion.div>
 
-        {/* Countdown blocks */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '12px',
-        }}>
-          <CountBlock value={timeLeft.days} label={t.countdownDays} delay={0.1} isInView={isInView} />
-          <CountBlock value={timeLeft.hours} label={t.countdownHours} delay={0.2} isInView={isInView} />
-          <CountBlock value={timeLeft.minutes} label={t.countdownMins} delay={0.3} isInView={isInView} />
-          <CountBlock value={timeLeft.seconds} label={t.countdownSecs} delay={0.4} isInView={isInView} />
-        </div>
+        {/* Qiz bazmi countdown */}
+        <CountdownGroup
+          title={t.event1Name}
+          dateLabel={`${t.event1Date} · ${t.event1Time}`}
+          timeLeft={qizBazmi}
+          startedLabel={t.countdownStarted}
+          baseDelay={0.2}
+          isInView={isInView}
+        />
 
-        {/* Separator dots */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.6 }}
-          style={{ display: 'flex', gap: '12px', alignItems: 'center' }}
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              animate={{ opacity: [0.3, 1, 0.3] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.5 }}
-              style={{
-                width: '4px',
-                height: '4px',
-                borderRadius: '50%',
-                background: '#C9A96E',
-              }}
-            />
-          ))}
-        </motion.div>
-
-        {/* Wedding date reminder */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-          transition={{ delay: 0.5 }}
-          style={{
-            fontFamily: 'Cormorant Garamond, serif',
-            fontSize: '18px',
-            fontWeight: 300,
-            fontStyle: 'italic',
-            color: 'rgba(201,169,110,0.7)',
-            margin: 0,
-            textAlign: 'center',
-          }}
-        >
-          25 Avgust 2026 · 16:00
-        </motion.p>
+        {/* Nikoh to'yi countdown */}
+        <CountdownGroup
+          title={t.event2Name}
+          dateLabel={`${t.event2Date} · ${t.event2Time}`}
+          timeLeft={nikoh}
+          startedLabel={t.countdownStarted}
+          baseDelay={0.45}
+          isInView={isInView}
+        />
       </div>
     </section>
   );
