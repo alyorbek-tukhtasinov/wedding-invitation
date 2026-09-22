@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { LanguageProvider } from './components/wedding/LanguageContext';
 import { LanguageSelector } from './components/wedding/LanguageSelector';
+import { MusicProvider } from './components/wedding/MusicContext';
 import { MusicPlayer } from './components/wedding/MusicPlayer';
+import { EnvelopeIntro } from './components/wedding/EnvelopeIntro';
 import { HeroSection } from './components/wedding/HeroSection';
 import { InvitationSection } from './components/wedding/InvitationSection';
 import { DetailsSection } from './components/wedding/DetailsSection';
@@ -13,68 +16,78 @@ import { MapSection } from './components/wedding/MapSection';
 // import { GiftSection } from './components/wedding/GiftSection';
 
 export default function App() {
+  const [hasOpened, setHasOpened] = useState(false);
+
   return (
     <LanguageProvider>
-      <div
-        style={{
-          // On desktop: center a mobile-proportioned column
-          minHeight: '100dvh',
-          background: '#050102',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'stretch',
-        }}
-      >
-        {/* Desktop side panels */}
+      <MusicProvider>
         <div
           style={{
-            display: 'none',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(ellipse at center, #0d0408 0%, #030001 100%)',
-            zIndex: -1,
-          }}
-        />
-
-        {/* Phone container */}
-        <div
-          id="wedding-scroll"
-          style={{
-            width: '100%',
-            maxWidth: '430px',
-            height: '100dvh',
-            overflowY: 'scroll',
-            scrollSnapType: 'y mandatory',
-            scrollBehavior: 'smooth',
-            position: 'relative',
-            // Hide scrollbar
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
+            // On desktop: center a mobile-proportioned column
+            minHeight: '100dvh',
+            background: '#050102',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'stretch',
           }}
         >
-          <style>{`
-            #wedding-scroll::-webkit-scrollbar { display: none; }
-            * { box-sizing: border-box; }
-          `}</style>
+          {/* Desktop side panels */}
+          <div
+            style={{
+              display: 'none',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'radial-gradient(ellipse at center, #0d0408 0%, #030001 100%)',
+              zIndex: -1,
+            }}
+          />
 
-          <HeroSection />
-          <InvitationSection />
-          <DetailsSection />
-          <CountdownSection />
-          <MapSection />
-          {/* <GiftSection /> */}
+          {/* Phone container */}
+          <div
+            id="wedding-scroll"
+            style={{
+              width: '100%',
+              maxWidth: '430px',
+              height: '100dvh',
+              overflowY: hasOpened ? 'scroll' : 'hidden',
+              pointerEvents: hasOpened ? 'auto' : 'none',
+              scrollSnapType: 'y mandatory',
+              scrollBehavior: 'smooth',
+              position: 'relative',
+              // Hide scrollbar
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style>{`
+              #wedding-scroll::-webkit-scrollbar { display: none; }
+              * { box-sizing: border-box; }
+            `}</style>
+
+            <HeroSection />
+            <InvitationSection />
+            <DetailsSection />
+            <CountdownSection />
+            <MapSection />
+            {/* <GiftSection /> */}
+          </div>
+
+          {/* Overlays (fixed, always on top) */}
+          <LanguageSelector />
+          <MusicPlayer />
+
+          {/* Section progress indicator */}
+          <SectionProgress totalSections={5} />
+
+          {/* Envelope intro gate — ochilish (konvert) effekti */}
+          <AnimatePresence>
+            {!hasOpened && <EnvelopeIntro onOpen={() => setHasOpened(true)} />}
+          </AnimatePresence>
         </div>
-
-        {/* Overlays (fixed, always on top) */}
-        <LanguageSelector />
-        <MusicPlayer />
-
-        {/* Section progress indicator */}
-        <SectionProgress totalSections={5} />
-      </div>
+      </MusicProvider>
     </LanguageProvider>
   );
 }

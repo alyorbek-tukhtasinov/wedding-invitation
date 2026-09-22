@@ -5,6 +5,8 @@ export type Lang = 'uz' | 'ru';
 export const translations = {
   uz: {
     langOther: 'RU',
+    envelopeInvite: "Taklifnoma",
+    envelopeHint: "Ochish uchun suring",
     heroBride: 'Zarifa',
     heroGroom: 'Sardorbek',
     heroAnd: '&',
@@ -58,6 +60,8 @@ export const translations = {
   },
   ru: {
     langOther: 'UZ',
+    envelopeInvite: "Приглашение",
+    envelopeHint: "Проведите, чтобы открыть",
     heroBride: 'Зарифа',
     heroGroom: 'Сардорбек',
     heroAnd: '&',
