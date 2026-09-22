@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
+import { weddingConfig } from '../../config/weddingConfig';
 
-const CARD_NUMBER = '5614 6820 9046 8861';
-const CARD_NUMBER_RAW = '5614682090468861';
+const CARD_NUMBER = weddingConfig.gift.cardNumber;
+const CARD_NUMBER_RAW = weddingConfig.gift.cardNumberRaw;
 
 export const GiftSection: React.FC = () => {
   const { t } = useLanguage();
@@ -311,7 +312,7 @@ export const GiftSection: React.FC = () => {
                 letterSpacing: '0.08em',
                 margin: 0,
               }}>
-                09/30
+                {weddingConfig.gift.validity}
               </p>
             </div>
           </div>

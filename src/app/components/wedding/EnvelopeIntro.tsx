@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import { gsap } from 'gsap';
 import { useLanguage } from './LanguageContext';
 import { useMusic } from './MusicContext';
+import { weddingConfig } from '../../config/weddingConfig';
 
 interface EnvelopeIntroProps {
   onOpen: () => void;
@@ -279,7 +280,7 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onOpen }) => {
             }}
           >
             <span style={{ fontFamily: 'Dancing Script, cursive', fontSize: '20px', color: '#2a1a08', fontWeight: 700 }}>
-              S&amp;Z
+              {weddingConfig.monogram}
             </span>
           </div>
         </motion.div>

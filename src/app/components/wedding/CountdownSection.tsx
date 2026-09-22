@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from './LanguageContext';
+import { weddingConfig } from '../../config/weddingConfig';
 
-// Ikki tadbir sanasi
-const QIZ_BAZMI_DATE = new Date('2026-10-03T10:00:00');
-const NIKOH_DATE = new Date('2026-10-04T11:00:00');
+// Ikki tadbir sanasi (weddingConfig.ts dan)
+const QIZ_BAZMI_DATE = new Date(weddingConfig.countdown.event1);
+const NIKOH_DATE = new Date(weddingConfig.countdown.event2);
 
 interface TimeLeft {
   days: number;

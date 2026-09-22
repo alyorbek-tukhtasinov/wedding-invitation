@@ -10,13 +10,21 @@ import { InvitationSection } from './components/wedding/InvitationSection';
 import { DetailsSection } from './components/wedding/DetailsSection';
 import { CountdownSection } from './components/wedding/CountdownSection';
 import { MapSection } from './components/wedding/MapSection';
-// GiftSection kod darajasida saqlab qolindi, lekin hozircha ko'rsatilmaydi.
-// Qayta yoqish uchun quyidagi importni va pastdagi <GiftSection /> qatorini
-// oching hamda SectionProgress totalSections qiymatini 6 ga o'zgartiring.
-// import { GiftSection } from './components/wedding/GiftSection';
+import { GiftSection } from './components/wedding/GiftSection';
+import { weddingConfig } from './config/weddingConfig';
 
 export default function App() {
   const [hasOpened, setHasOpened] = useState(false);
+
+  // Sovg'a bo'limi weddingConfig.gift.enabled orqali yoqiladi/o'chiriladi.
+  const giftEnabled = weddingConfig.gift.enabled;
+  // Bo'limlar soni: Hero, Invitation, Details, Countdown, Map (+ Gift)
+  const totalSections = giftEnabled ? 6 : 5;
+
+  // Brauzer sahifa nomini config'dan o'rnatamiz.
+  useEffect(() => {
+    document.title = weddingConfig.siteTitle;
+  }, []);
 
   return (
     <LanguageProvider>
@@ -72,7 +80,7 @@ export default function App() {
             <DetailsSection />
             <CountdownSection />
             <MapSection />
-            {/* <GiftSection /> */}
+            {giftEnabled && <GiftSection />}
           </div>
 
           {/* Overlays (fixed, always on top) */}
@@ -80,7 +88,7 @@ export default function App() {
           <MusicPlayer />
 
           {/* Section progress indicator */}
-          <SectionProgress totalSections={5} />
+          <SectionProgress totalSections={totalSections} />
 
           {/* Envelope intro gate — ochilish (konvert) effekti */}
           <AnimatePresence>
